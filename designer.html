@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cover Letter Designer | Create</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="brand"
+        ><span class="brand-icon">✉</span> Cover Letter Designer</a
+      >
+      <div class="nav-links">
+        <a href="index.html">← Home</a>
+      </div>
+    </nav>
+
+    <header class="app-header">
+      <h1>Create your cover letter</h1>
+      <p>Follow the four steps below. Your work stays in your browser.</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <div class="panel-title">
+          <span class="step-badge">1</span>
+          <h2>Upload your resume</h2>
+        </div>
+        <p>
+          Upload a PDF or DOCX file. The fields will be filled automatically,
+          and you can correct them.
+        </p>
+        <label class="upload-zone">
+          <input type="file" id="resumeFile" accept=".pdf,.docx" />
+          <span class="upload-icon">📄</span>
+          <span class="upload-text"
+            ><strong>Click to choose a file</strong> or drag it here<br /><small
+              >PDF or DOCX</small
+            ></span
+          >
+        </label>
+        <p id="uploadStatus" class="status"></p>
+
+        <div class="grid">
+          <label>Full name <input id="rName" /></label>
+          <label>Email <input id="rEmail" /></label>
+          <label>Phone <input id="rPhone" /></label>
+          <label
+            >Location <input id="rLocation" placeholder="City, Country"
+          /></label>
+          <label class="full"
+            >Skills (comma separated)
+            <textarea id="rSkills" rows="2"></textarea>
+          </label>
+          <label class="full"
+            >Experience (one role or achievement per line)
+            <textarea id="rExperience" rows="5"></textarea>
+          </label>
+          <label class="full"
+            >Education <textarea id="rEducation" rows="2"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">
+          <span class="step-badge">2</span>
+          <h2>Company details</h2>
+        </div>
+        <p>
+          Enter the job details. Pasting the job description and requirements
+          gives better matching.
+        </p>
+        <div class="grid">
+          <label>Company name <input id="cCompany" /></label>
+          <label>Job title <input id="cRole" /></label>
+          <label
+            >Hiring manager (optional)
+            <input id="cHiring" placeholder="Ms. Smith"
+          /></label>
+          <label class="full"
+            >Job description <textarea id="cJD" rows="4"></textarea>
+          </label>
+          <label class="full"
+            >Key requirements (one per line)
+            <textarea id="cRequirements" rows="4"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">
+          <span class="step-badge">3</span>
+          <h2>Choose a template</h2>
+        </div>
+        <p>
+          Pick the layout for your letter. The text stays the same, and only the
+          design changes.
+        </p>
+        <div class="templates">
+          <label class="tpl-card">
+            <input type="radio" name="template" value="classic" checked />
+            <span class="tpl-name">Classic</span>
+            <span class="tpl-desc"
+              >Serif font, centred header, traditional look</span
+            >
+          </label>
+          <label class="tpl-card">
+            <input type="radio" name="template" value="modern" />
+            <span class="tpl-name">Modern</span>
+            <span class="tpl-desc">Coloured header band, sans-serif font</span>
+          </label>
+          <label class="tpl-card">
+            <input type="radio" name="template" value="minimal" />
+            <span class="tpl-name">Minimal</span>
+            <span class="tpl-desc"
+              >Clean, left-aligned, plenty of white space</span
+            >
+          </label>
+        </div>
+        <button id="generateBtn" class="btn btn-primary btn-lg">
+          Generate cover letter
+        </button>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">
+          <span class="step-badge">4</span>
+          <h2>Preview and download</h2>
+        </div>
+        <p>
+          Review the letter and edit the body text if needed. The preview
+          updates as you type.
+        </p>
+        <div id="preview" class="letter tpl-classic"></div>
+        <label class="full"
+          >Letter body (editable)
+          <textarea id="letterBody" rows="12"></textarea>
+        </label>
+        <div class="actions">
+          <button id="downloadBtn" class="btn btn-primary">Download PDF</button>
+          <button id="saveBtn" class="btn">Save letter</button>
+          <button id="copyBtn" class="btn">Copy text</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">
+          <span class="step-badge">★</span>
+          <h2>Saved letters</h2>
+        </div>
+        <p>
+          Letters you save are stored in this browser so you can reload or
+          delete them later.
+        </p>
+        <ul id="savedList" class="saved-list"></ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Cover Letter Designer · Runs entirely in your browser</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
